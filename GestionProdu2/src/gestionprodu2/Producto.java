@@ -10,17 +10,16 @@ public class Producto implements Comparable<Producto> {
     private String descripcion;
     private double precio;
     private int stock;
-    private String comestible, limpieza, perfumeria;
+    private String rubro;
 
-    public Producto(int codigo, String descripcion, double precio, int stock, String comestible, String limpieza, String perfumeria) {
+    public Producto(int codigo, String descripcion, double precio, int stock, String rubro) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-        this.comestible = comestible;
-        this.limpieza = limpieza;
-        this.perfumeria = perfumeria;
- 
+        if (rubro.equalsIgnoreCase("comestible")|| rubro.equalsIgnoreCase("limpieza")
+                || rubro.equalsIgnoreCase("perfumeria"))
+        this.rubro = rubro;     
     }
 
     public int getCodigo() {
@@ -55,29 +54,20 @@ public class Producto implements Comparable<Producto> {
         this.stock = stock;
     }
 
-    public String getComestible() {
-        return comestible;
+    public String getRubro() {
+        return rubro;
     }
 
-    public void setComestible(String comestible) {
-        this.comestible = comestible;
+    public void setRubro(String rubro) {
+        this.rubro = rubro;
     }
+    
+    
+    
 
-    public String getLimpieza() {
-        return limpieza;
-    }
+   
 
-    public void setLimpieza(String limpieza) {
-        this.limpieza = limpieza;
-    }
-
-    public String getPerfumeria() {
-        return perfumeria;
-    }
-
-    public void setPerfumeria(String perfumeria) {
-        this.perfumeria = perfumeria;
-    }
+    
 
     @Override
     public int compareTo(Producto otro) {

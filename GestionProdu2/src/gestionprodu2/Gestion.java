@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 
@@ -20,6 +21,7 @@ public class Gestion extends javax.swing.JInternalFrame {
     
     public Gestion() {
         initComponents();
+        inicializarJcombo_catego();
         
         setTitle("Gestion de Productos");
         
@@ -180,7 +182,7 @@ public class Gestion extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Buscar");
 
         jButton7.setText("Cerrar");
         jButton7.setToolTipText("");
@@ -221,7 +223,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                             .addComponent(jButton_eliminar)
                             .addComponent(jButton6)
                             .addComponent(jButton7))
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                        .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -268,7 +270,8 @@ public class Gestion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jCombo_categoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCombo_categoActionPerformed
-       
+        
+        
         Set<Producto> productos = new TreeSet <>(Comparator.comparingInt(Producto::getCodigo));
         
     }//GEN-LAST:event_jCombo_categoActionPerformed
@@ -338,12 +341,14 @@ public class Gestion extends javax.swing.JInternalFrame {
 
         private void inicializarComponentes() {
     // ... Código de inicialización
+    jCombo_catego = new JComboBox<>();
         jButton_guardar.addActionListener(e -> { 
         // Lógica para guardar productos
         if (validarPrecio(txtPrecio.getText()) && validarDescripcion(txtdescripcion.getText())) {
             // Guardar producto
             JOptionPane.showMessageDialog(null, "Producto guardado exitosamente.");
             jButton_guardar.setEnabled(false); // Deshabilitar nuevamente el botón
+            
         }
     });
 }
@@ -397,4 +402,9 @@ public class Gestion extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtdescripcion;
     // End of variables declaration//GEN-END:variables
 
+    public void inicializarJcombo_catego(){
+    jCombo_catego.addItem("comestible");
+        jCombo_catego.addItem("limpieza");
+        jCombo_catego.addItem("perfumeria");
+    }
 }
